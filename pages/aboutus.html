@@ -127,6 +127,7 @@
               <div class="d-flex">
                 
                 <span class="mr-3 text-danger"><p id="date"></p>
+                  <p id="time"></p>
                   <script>
                   var d = new Date();
                   var days = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -328,6 +329,29 @@
     <script src="../assets/js/demo.js"></script>
     <script src="../assets/js/jquery.easeScroll.js"></script>
     <script src="../assets/js/jquery.easeScroll.js"></script>
+
+    <script>
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+      
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        // add a zero in front of numbers<10
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+        t = setTimeout(function() {
+          startTime()
+        }, 500);
+      }
+      startTime();</script>
     <!-- End custom js for this page-->
   </body>
 </html>
